@@ -3,6 +3,5 @@ import { HomeComponent } from "../components/Home/home.component"
 import { PokemonList } from "../components/PokemonList/pokemon-list.component"
 
 export const Routes: AngularRoutes = [
-  { path:"", component: HomeComponent},
-  { path:"pokemon-list", component: PokemonList}
+  { path:"", component: PokemonList},
 ]
