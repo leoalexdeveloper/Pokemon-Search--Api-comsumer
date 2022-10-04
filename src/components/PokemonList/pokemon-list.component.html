@@ -1,0 +1,52 @@
+<div class="container-fluid">
+
+  <!-- panel start -->
+  <div
+    class="p-2 border rounded d-flex flex-wrap justify-content-start align-items-center position-sticky top-0 start-0 bg-light"
+    style="z-index: 9999"
+  >
+    <span class="col-12 col-sm-4 col-md-3 col-lg-2 p-2 fs-sm-6"
+      >Pokemons: {{ pokemons.count }}</span
+    >
+    <div
+      class="col-12 col-sm-4 col-md-3 col-lg-2 d-flex justify-content-start align-items-center"
+    >
+      <span class="p-2">Showned: {{ searchedPokemons.length }}</span>
+    </div>
+    <form class="d-flex" role="search">
+      <input
+        (input)="handleSearchInput($event)"
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+    </form>
+  </div>
+  <!-- panel end -->
+
+  <!-- render if no pokemons to show -->
+  <section
+    class="col-12 d-flex flex-wrap justify-content-center align-items-center p-5"
+    *ngIf="searchedPokemons.length === 0"
+  >
+    No results for:
+    <span class="fs-4"
+      ><em>"{{ searchedTerm }}"</em>
+    </span
+    >
+  </section>
+  <!-- render if no pokemons to show -->
+
+  <!-- cards container -->
+  <section
+    class="col-12 d-flex flex-wrap flex-row justify-content-center"
+    *ngIf="searchedPokemons.length > 0"
+  >
+      <app-pokemon-card (emitPokemonId)="openModal($event)" *ngFor="let pokemon of searchedPokemons" [pokemon]="pokemon"></app-pokemon-card>
+      <app-pokemon-modal (closeModal)="handleCloseModal()" [pokemonInfo]="pokemonInfo" *ngIf="pokemonInfo"></app-pokemon-modal>
+  </section>
+
+  <app-scroll-up-button></app-scroll-up-button>
+
+</div>
