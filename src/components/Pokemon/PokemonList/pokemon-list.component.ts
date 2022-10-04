@@ -1,6 +1,6 @@
-import { PokemonListService } from "../../components/PokemonList/pokemon-list.service";
+import { PokemonService } from "../../../components/Pokemon/pokemon.service";
 import { Component } from "@angular/core"
-import type { Pokemons, PokemonResults, PokemonInfo } from "../../interfaces/Pokemons.interface"
+import type { Pokemons, PokemonResults, PokemonInfo } from "../../../interfaces/Pokemons.interface"
 
 @Component({
   selector: "app-pokemon-list",
@@ -26,12 +26,12 @@ export class PokemonList{
   public searchedTerm: string = ''
   public searchedPokemons:PokemonResults[] = []
 
-  constructor(private PokemonListService:PokemonListService){
+  constructor(private PokemonService:PokemonService){
     window.onscroll = () => this.handleLoadByScroll()
   }
 
   async ngOnInit(){
-    await this.PokemonListService.getAllPokemons()
+    await this.PokemonService.getAllPokemons()
     this.loadPokemons()
     this.copyToLoadPokemonsToSeachPokemons()
     window.onload = ()=> this.handleLoadByScroll()
@@ -42,7 +42,7 @@ export class PokemonList{
   }
 
   loadPokemons(){
-    Object.assign(this.pokemons, (this.PokemonListService.pokemons))
+    Object.assign(this.pokemons, (this.PokemonService.pokemons))
   }
 
   copyToLoadPokemonsToSeachPokemons(){
@@ -77,8 +77,8 @@ export class PokemonList{
   }
 
   async openModal(id:number){
-    await this.PokemonListService.getPokemonInfo(id)
-    this.pokemonInfo = this.PokemonListService.pokemonInfo
+    await this.PokemonService.getPokemonInfo(id)
+    this.pokemonInfo = this.PokemonService.pokemonInfo
     document.body.style.overflowY="hidden"
   }
 }

@@ -1,7 +1,7 @@
 import { Api } from "../../api"
 import type { Pokemons, PokemonInfo } from "../../interfaces/Pokemons.interface"
 
-export class PokemonListService{
+export class PokemonService{
   public pokemons:Pokemons | undefined
   public pokemonInfo:PokemonInfo | undefined
 
