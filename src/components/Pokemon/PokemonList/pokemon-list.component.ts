@@ -26,14 +26,13 @@ export class PokemonList{
   public searchedTerm: string = ''
   public searchedPokemons:PokemonResults[] = []
 
-  constructor(private PokemonService:PokemonService){
-    window.onscroll = () => this.handleLoadByScroll()
-  }
+  constructor(private PokemonService:PokemonService){}
 
   async ngOnInit(){
-    await this.PokemonService.getAllPokemons()
+    this.pokemons = await this.PokemonService.getAllPokemons()
     this.loadPokemons()
     this.copyToLoadPokemonsToSeachPokemons()
+    window.onscroll = () => this.handleLoadByScroll()
     window.onload = ()=> this.handleLoadByScroll()
   }
 
@@ -42,7 +41,7 @@ export class PokemonList{
   }
 
   loadPokemons(){
-    Object.assign(this.pokemons, (this.PokemonService.pokemons))
+    //Object.assign(this.pokemons, (this.PokemonService.pokemons))
   }
 
   copyToLoadPokemonsToSeachPokemons(){
