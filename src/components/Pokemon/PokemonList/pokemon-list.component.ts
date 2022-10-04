@@ -44,7 +44,9 @@ export class PokemonList{
   }
 
   handleLoadByScroll(){
-      if((window.innerHeight + window.pageYOffset + 1) >= document.body.offsetHeight){
+      if((window.innerHeight + window.pageYOffset + 1) >= document.body.offsetHeight
+      &&
+      this.searchedTerm.length === 0){
         this.pokemonOffset += 20
         this.pokemonPerPage += 20
         this.copyToLoadPokemonsToSeachPokemons()

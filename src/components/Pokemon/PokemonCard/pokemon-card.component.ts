@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core"
 import { PokemonResults } from "../../../interfaces/Pokemons.interface"
 import { Utils } from "../../../utils/utils.service"
+import axios from "axios"
+
 @Component({
   selector: "app-pokemon-card",
   templateUrl: "./pokemon-card.component.html",

@@ -17,6 +17,10 @@ export class PokemonModal {
 
   }
 
+  handlePoekmonImage(image: string){
+    return (image) ? image : "../../assets/img/logo/logo.png"
+  }
+
   handleCloseModal(){
     this.closeModal.emit()
   }

@@ -22,17 +22,24 @@
 
 <article class="d-flex flex-column flex-sm-row flex-md-row flex-lg-row flex-xl-row mt-3">
 
-<div class="col-12 col-sm-5 col-md-3 col-lg-3 col-xl-3 bg-light text-center d-flex align-items-center justify-content-center">
-  <img class="col-8 col-sm-10" src={{pokemonInfo.sprites.other.home.front_default}} alt="">
+<div class="col-12 col-sm-5 col-md-3 col-lg-3 col-xl-3 bg-light text-center d-flex align-items-start justify-content-center">
+  <span *ngIf="!pokemonInfo.sprites.other.home.front_default"
+  class="p-5">
+    <em>Image not available</em>
+  </span>
+  <img *ngIf="pokemonInfo.sprites.other.home.front_default"
+  class="col-8 col-sm-10"
+  src={{pokemonInfo.sprites.other.home.front_default}}
+  alt={{pokemonInfo.species.name}}>
 </div>
 
 <article class="col-12 col-sm-6 col-md-9 col-lg-8 col-xl-8 d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row justify-content-evenly">
-<div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 fs-6 d-flex flex-column justify-content-start bg-light">
+<div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 fs-5 d-flex flex-column justify-content-start bg-light">
   <p class="col-12 d-flex flex-column justify-content-center align-items-center bg-primary text-light p-1">
     Abilities
   </p>
   <ul class="col-12 list-unstyled text-dark">
-    <li class="fs-6 text-start p-2 border" *ngFor="let ability of pokemonInfo.abilities">
+    <li class="fs-6 px-3 text-start p-2 border" *ngFor="let ability of pokemonInfo.abilities">
       {{Utils.capitalize(ability.ability.name)}}
     </li>
   </ul>
@@ -48,7 +55,7 @@
 </div>
 
 <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 bg-light">
-  <p class="col-12 fs-6 p-1 d-flex flex-column justify-content-center align-items-center bg-primary text-light">
+  <p class="col-12 fs-5 p-1 d-flex flex-column justify-content-center align-items-center bg-primary text-light">
     Stats
   </p>
   <div class="col-12 m-auto fs-6 d-flex flex-row justify-content-center position-relative border"
