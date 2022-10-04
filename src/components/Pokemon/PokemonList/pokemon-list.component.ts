@@ -30,7 +30,6 @@ export class PokemonList{
 
   async ngOnInit(){
     this.pokemons = await this.PokemonService.getAllPokemons()
-    this.loadPokemons()
     this.copyToLoadPokemonsToSeachPokemons()
     window.onscroll = () => this.handleLoadByScroll()
     window.onload = ()=> this.handleLoadByScroll()
@@ -38,10 +37,6 @@ export class PokemonList{
 
   ngDoCheck(){
 
-  }
-
-  loadPokemons(){
-    //Object.assign(this.pokemons, (this.PokemonService.pokemons))
   }
 
   copyToLoadPokemonsToSeachPokemons(){
@@ -76,8 +71,7 @@ export class PokemonList{
   }
 
   async openModal(id:number){
-    await this.PokemonService.getPokemonInfo(id)
-    this.pokemonInfo = this.PokemonService.pokemonInfo
+    this.pokemonInfo = await this.PokemonService.getPokemonInfo(id)
     document.body.style.overflowY="hidden"
   }
 }
