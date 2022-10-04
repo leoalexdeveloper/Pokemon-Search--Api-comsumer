@@ -3,11 +3,18 @@
           style="z-index:99999; overflow-y: auto; height: 100vh">
 
 <div class="col-12 p-2 bg-primary text-light d-flex justify-content-center align-items-center position-relative">
+
+  <div class="position-absolute start-0 top-25 mx-4 fs-6 px-2 text-light me-right">
+    <img class="col-1" src="../../../assets/img/logo/logo.png" alt="">
+    <span class=""></span>
+  </div>
+
   <span class="col-12 fs-4 text-center">
     {{Utils.capitalize(pokemonInfo.species.name)}}
   </span>
+
   <fa-icon [icon]="faXmark"
-          class="position-absolute end-0 top-25 mx-4 rounded-circle border fs-6 px-2 bg-warning text-light me-right"
+          class="position-absolute end-0 top-25 mx-4 rounded-circle border fs-6 px-2 py-0 bg-warning text-light me-right"
           style="cursor:pointer"
           (click)="handleCloseModal()">
   </fa-icon>
@@ -16,10 +23,10 @@
 <article class="d-flex flex-column flex-sm-row flex-md-row flex-lg-row flex-xl-row mt-3">
 
 <div class="col-12 col-sm-5 col-md-3 col-lg-3 col-xl-3 bg-light text-center d-flex align-items-center justify-content-center">
-  <img class="col-10" src={{pokemonInfo.sprites.other.home.front_default}} alt="">
+  <img class="col-8 col-sm-10" src={{pokemonInfo.sprites.other.home.front_default}} alt="">
 </div>
 
-<article class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8 d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row justify-content-evenly">
+<article class="col-12 col-sm-6 col-md-9 col-lg-8 col-xl-8 d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row justify-content-evenly">
 <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 fs-6 d-flex flex-column justify-content-start bg-light">
   <p class="col-12 d-flex flex-column justify-content-center align-items-center bg-primary text-light p-1">
     Abilities
@@ -29,6 +36,15 @@
       {{Utils.capitalize(ability.ability.name)}}
     </li>
   </ul>
+
+  <div class="col-12 mb-2 bg-primary d-flex align-items-center justify-content-evenly py-2">
+    <span class="col-5 fs-6 bg-primary text-light d-flex align-items-center justify-content-start">
+      Weight:
+    </span>
+    <span class="col-5 fs-6 text-light d-flex align-items-center justify-content-end">
+      {{pokemonInfo.weight}} Kg
+    </span>
+  </div>
 </div>
 
 <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 bg-light">
@@ -49,13 +65,9 @@
   </div>
   <hr>
 </div>
+
 </article>
 </article>
 
-<div class="col-12 bg-primary d-flex align-items-center justify-content-evenly py-2">
-  <span class="col-5 fs-6 bg-primary text-light d-flex align-items-center justify-content-start">Weight:</span>
-  <span class="col-5 fs-6 text-light d-flex align-items-center justify-content-end">
-    {{pokemonInfo.weight}} Kg
-  </span>
-</div>
+
 </section>
